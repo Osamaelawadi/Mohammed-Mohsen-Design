@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Mohammed Mohsen</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js" defer></script>
+    <style>
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .form-group label {
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+        .form-group input, .form-group textarea {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 1rem;
+            border-radius: 12px;
+            color: white;
+            font-family: inherit;
+            outline: none;
+            transition: var(--transition);
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--accent-color);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        .info-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        @media (max-width: 768px) {
+            .contact-wrapper { grid-template-columns: 1fr; }
+        }
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .social-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: var(--bg-card) !important;
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: var(--transition);
+        }
+        .social-btn:hover {
+            border-color: var(--accent-color);
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-5px);
+        }
+        .social-btn svg {
+            width: 32px;
+            height: 32px;
+            color: var(--brand-color, var(--accent-1));
+        }
+        .social-btn:hover svg {
+            filter: drop-shadow(0 0 8px var(--brand-color));
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-dynamics">
+        <div class="bg-orb orb-1"></div>
+        <div class="bg-orb orb-2"></div>
+        <div class="bg-orb orb-3"></div>
+    </div>
+    <div class="bg-grid"></div>
+
+    <nav>
+        <div class="logo">Mohammed Mohsen</div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="work.html">Work</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="animate-reveal" style="text-align: center; margin-bottom: 5rem;">
+            <h1>Let's <span class="gradient-text">Connect</span></h1>
+            <p style="color: var(--text-dim); font-size: 1.1rem; max-width: 600px; margin: 0 auto;">Ready to bring your vision to life? Reach out through any of the platforms below.</p>
+        </header>
+        <div class="contact-wrapper animate-reveal" style="display: flex; flex-direction: column; align-items: center; gap: 4rem; margin-top: 5rem;">
+            <!-- Social Buttons Grid -->
+            <div class="social-grid" style="display: flex; justify-content: center; gap: 2rem; width: 100%; max-width: 800px;">
+                <a href="https://www.instagram.com/mohamed_mohsen75/" target="_blank" class="glass-card social-btn" style="flex: 1; display: flex; flex-direction: column; align-items: center; text-decoration: none; transition: var(--transition);">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram" style="width: 40px; margin-bottom: 1rem;">
+                    <span style="font-weight: 700; color: var(--text-main);">Instagram</span>
+                </a>
+                <a href="https://www.linkedin.com/in/mohamed-mohsen-a0762430a" target="_blank" class="glass-card social-btn" style="flex: 1; display: flex; flex-direction: column; align-items: center; text-decoration: none; transition: var(--transition);">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" alt="LinkedIn" style="width: 40px; margin-bottom: 1rem;">
+                    <span style="font-weight: 700; color: var(--text-main);">LinkedIn</span>
+                </a>
+                <a href="https://wa.me/201007420298" target="_blank" class="glass-card social-btn" style="flex: 1; display: flex; flex-direction: column; align-items: center; text-decoration: none; transition: var(--transition);">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width: 40px; margin-bottom: 1rem;">
+                    <span style="font-weight: 700; color: var(--text-main);">WhatsApp</span>
+                </a>
+            </div>
+
+
+            <div class="contact-form glass-card">
+                <div class="info-item">
+                    <h3 style="color: var(--accent-1);">Email</h3>
+                    <p style="font-size: 1.2rem;">Mm954079@gmail.com</p>
+                </div>
+                <div class="info-item" style="margin-top: 3rem;">
+                    <h3 style="color: var(--accent-1);">Location</h3>
+                    <p style="font-size: 1.2rem;">Egypt, Cairo, Nasr City</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; Mohammed Mohsen Designs. All rights reserved.</p>
+    </footer>
+</body>
+</html>

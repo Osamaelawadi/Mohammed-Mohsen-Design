@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work | Mohsen Design</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js" defer></script>
+</head>
+<body>
+    <div class="bg-dynamics">
+        <div class="bg-orb orb-1"></div>
+        <div class="bg-orb orb-2"></div>
+        <div class="bg-orb orb-3"></div>
+    </div>
+    <div class="bg-grid"></div>
+
+    <nav>
+        <div class="logo">Mohsen Design</div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="work.html" class="active">Work</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="animate-reveal">
+            <h1>Selected <span class="gradient-text">Work</span></h1>
+            <p style="color: var(--text-dim); font-size: 1.1rem; max-width: 600px;">A collection of logos, brand identities, and social media designs created with passion and precision.</p>
+        </header>
+
+        <div class="portfolio-grid animate-reveal" style="animation-delay: 0.2s; display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 3rem; margin-top: 5rem;">
+            <!-- Social Media Designs -->
+            <div class="portfolio-item">
+                <img src="assets/Arafat Sweets/IMG_5565.PNG" alt="Arafat Sweets">
+                <div class="portfolio-overlay">
+                    <span>Social Media</span>
+                    <h3>Arafat Sweets</h3>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="assets/Arafat menu/IMG_8281.JPG.jpeg" alt="Arafat Menu">
+                <div class="portfolio-overlay">
+                    <span>Menu Design</span>
+                    <h3>Arafat menu</h3>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="assets/Woodik/IMG_5413.PNG" alt="Woodik">
+                <div class="portfolio-overlay">
+                    <span>Social Media</span>
+                    <h3>Woodik</h3>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="assets/Insan/IMG_5415.PNG" alt="Insan">
+                <div class="portfolio-overlay">
+                    <span>Social Media</span>
+                    <h3>Insan</h3>
+                </div>
+            </div>
+            
+            <!-- Brochure & ID Card -->
+            <div class="portfolio-item">
+                <img src="assets/Fares Al sharqia/IMG_5397.PNG" alt="Fares Al sharqia">
+                <div class="portfolio-overlay">
+                    <span>Brochure</span>
+                    <h3>Fares Al Sharqia</h3>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="assets/Sola Store/IMG_5410.PNG" alt="Sola Store ID Card">
+                <div class="portfolio-overlay">
+                    <span>ID Card Design</span>
+                    <h3>Sola Store</h3>
+                </div>
+            </div>
+
+            <!-- Logos -->
+            <div class="portfolio-item">
+                <img src="assets/logos/IMG_8272.PNG" alt="Logo Design">
+                <div class="portfolio-overlay">
+                    <span>Logo</span>
+                    <h3>Nebras</h3>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="assets/logos/IMG_8273.PNG" alt="Logo Design">
+                <div class="portfolio-overlay">
+                    <span>Logo</span>
+                    <h3>Fares Al Sharqia</h3>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="assets/logos/IMG_8274.PNG" alt="Logo Design">
+                <div class="portfolio-overlay">
+                    <span>Logo</span>
+                    <h3>Ghina Towers</h3>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="assets/logos/IMG_8278.PNG" alt="Logo Design">
+                <div class="portfolio-overlay">
+                    <span>Logo</span>
+                    <h3>Havora</h3>
+                </div>
+            </div>
+
+            <!-- Digital Brochures (PDFs) -->
+            <div class="portfolio-item" data-type="pdf" data-url="assets/profile company/BROCHURE GHINA.pdf">
+                <img src="assets/profile company/ghina.PNG" alt="Ghina Towers Brochure">
+                <div class="portfolio-overlay">
+                    <span>Profile Company</span>
+                    <h3>Ghina Towers</h3>
+                </div>
+            </div>
+            <div class="portfolio-item" data-type="pdf" data-url="assets/profile company/brochure fares_compressed_organized.pdf">
+                <img src="assets/profile company/fares.PNG" alt="Fares Al Sharqia Brochure">
+                <div class="portfolio-overlay">
+                    <span>Profile Company</span>
+                    <h3>Fares Al Sharqia</h3>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <!-- Gallery Overlay -->
+    <div id="galleryOverlay" class="gallery-overlay">
+        <button class="close-gallery" title="Close Gallery">&times;</button>
+        <div class="gallery-content">
+            <h2 id="galleryTitle" class="gradient-text" style="font-size: 3rem; margin-bottom: 2rem;">Project Gallery</h2>
+            <p style="color: var(--text-dim); margin-bottom: 3rem;">Click any image to view in full screen</p>
+            <div id="galleryGrid" class="gallery-images-grid">
+                <!-- Images will be injected here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Fullscreen Lightbox -->
+    <div id="fullscreenLightbox" class="fullscreen-lightbox">
+        <button class="close-lightbox">&times;</button>
+        <img id="lightboxImg" src="" alt="Full View">
+    </div>
+
+
+    <script>
+        const projectData = {
+            'Arafat Sweets': [
+                'assets/Arafat Sweets/IMG_5565.PNG', 'assets/Arafat Sweets/IMG_6340.PNG', 
+                'assets/Arafat Sweets/IMG_6410.PNG', 'assets/Arafat Sweets/IMG_6420.PNG', 
+                'assets/Arafat Sweets/IMG_6432.PNG', 'assets/Arafat Sweets/IMG_6444.PNG', 
+                'assets/Arafat Sweets/IMG_6492.PNG', 'assets/Arafat Sweets/IMG_6515.PNG', 
+                'assets/Arafat Sweets/IMG_6618.PNG', 'assets/Arafat Sweets/IMG_7483.PNG'
+            ],
+            'Arafat menu': [
+                'assets/Arafat menu/IMG_8281.JPG.jpeg', 'assets/Arafat menu/IMG_8282.JPG.jpeg'
+            ],
+            'Woodik': [
+                'assets/Woodik/IMG_5413.PNG', 'assets/Woodik/IMG_5418.PNG', 
+                'assets/Woodik/IMG_5735.PNG', 'assets/Woodik/IMG_7531.PNG', 'assets/Woodik/IMG_7766.PNG'
+            ],
+            'Insan': [
+                'assets/Insan/IMG_5415.PNG', 'assets/Insan/IMG_5417.PNG', 
+                'assets/Insan/IMG_8279.PNG', 'assets/Insan/IMG_8280.PNG'
+            ],
+            'Fares Al Sharqia': [
+                'assets/Fares Al sharqia/IMG_5394.PNG', 'assets/Fares Al sharqia/IMG_5395.PNG', 
+                'assets/Fares Al sharqia/IMG_5397.PNG', 'assets/Fares Al sharqia/IMG_5398.PNG',
+                'assets/logos/IMG_8273.PNG'
+            ],
+            'Sola Store': [
+                'assets/Sola Store/IMG_5409.PNG', 'assets/Sola Store/IMG_5410.PNG', 
+                'assets/Sola Store/IMG_5411.PNG', 'assets/Sola Store/IMG_5412.PNG'
+            ],
+            'Nebras': ['assets/logos/IMG_8272.PNG'],
+            'Ghina Towers': ['assets/logos/IMG_8274.PNG'],
+            'Havora': ['assets/logos/IMG_8278.PNG']
+        };
+
+        function openGallery(projectName) {
+            const overlay = document.getElementById('galleryOverlay');
+            const grid = document.getElementById('galleryGrid');
+            const title = document.getElementById('galleryTitle');
+            
+            title.textContent = projectName;
+            grid.innerHTML = '';
+            
+            const images = projectData[projectName] || [];
+            images.forEach(src => {
+                const img = document.createElement('img');
+                img.src = src;
+                img.onclick = () => openLightbox(src);
+                grid.appendChild(img);
+            });
+            
+            overlay.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function openLightbox(src) {
+            const lightbox = document.getElementById('fullscreenLightbox');
+            const img = document.getElementById('lightboxImg');
+            img.src = src;
+            lightbox.style.display = 'flex';
+        }
+
+        document.querySelectorAll('.portfolio-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                const type = item.getAttribute('data-type');
+                if (type === 'pdf') {
+                    window.open(item.getAttribute('data-url'), '_blank');
+                    return;
+                }
+                const projectName = item.querySelector('h3').textContent.trim();
+                openGallery(projectName);
+            });
+        });
+
+        document.querySelector('.close-gallery').addEventListener('click', () => {
+            document.getElementById('galleryOverlay').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+
+        document.querySelector('.close-lightbox').addEventListener('click', () => {
+            document.getElementById('fullscreenLightbox').style.display = 'none';
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.getElementById('fullscreenLightbox').style.display = 'none';
+                document.getElementById('galleryOverlay').style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        });
+    </script>
+
+    <footer>
+        <p>&copy; Mohammed Mohsen Designs. All rights reserved.</p>
+    </footer>
+</body>
+</html>
