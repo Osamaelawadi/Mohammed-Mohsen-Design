@@ -129,14 +129,6 @@
                 </div>
             </div>
 
-            <!-- Add Project Helper (Developer Only) -->
-            <div class="portfolio-item add-project-card" id="addProjectBtn">
-                <div class="add-project-content">
-                    <div class="plus-icon">+</div>
-                    <p>Add New Project</p>
-                    <span style="font-size: 0.8rem; opacity: 0.6;">(Generator Tool)</span>
-                </div>
-            </div>
         </div>
     </main>
 
@@ -159,58 +151,7 @@
         <img id="lightboxImg" src="" alt="Full View">
     </div>
 
-    <!-- Project Generator Modal -->
-    <div id="generatorModal" class="gallery-overlay" style="padding-top: 4rem;">
-        <button class="close-gallery" id="closeGenerator">&times;</button>
-        <div class="container" style="max-width: 800px; padding-top: 0;">
-            <h2 class="gradient-text" style="font-size: 2.5rem; margin-bottom: 2rem;">Add New Project</h2>
-            <div class="glass-card" style="padding: 2rem;">
-                <form id="projectForm" style="display: flex; flex-direction: column; gap: 1.5rem;">
-                    <div class="form-group">
-                        <label>Project Title</label>
-                        <input type="text" id="pTitle" placeholder="e.g., Creative Brand" required style="width: 100%; padding: 1rem; background: var(--bg-dark); border: 1px solid var(--glass-border); color: white; border-radius: 12px; margin-top: 0.5rem;">
-                    </div>
-                    <div class="form-group">
-                        <label>Category</label>
-                        <input type="text" id="pCategory" placeholder="e.g., Logo Design" required style="width: 100%; padding: 1rem; background: var(--bg-dark); border: 1px solid var(--glass-border); color: white; border-radius: 12px; margin-top: 0.5rem;">
-                    </div>
-                    <div class="form-group">
-                        <label>Main Image Path (Cover)</label>
-                        <input type="text" id="pMainImg" placeholder="assets/folder/image.png" required style="width: 100%; padding: 1rem; background: var(--bg-dark); border: 1px solid var(--glass-border); color: white; border-radius: 12px; margin-top: 0.5rem;">
-                    </div>
-                    <div class="form-group">
-                        <label>Project Type</label>
-                        <select id="pType" style="width: 100%; padding: 1rem; background: var(--bg-dark); border: 1px solid var(--glass-border); color: white; border-radius: 12px; margin-top: 0.5rem;">
-                            <option value="gallery">Image Gallery</option>
-                            <option value="pdf">PDF File</option>
-                        </select>
-                    </div>
-                    <div id="galleryInputs" class="form-group">
-                        <label>Gallery Images (Paths separated by comma)</label>
-                        <textarea id="pGallery" placeholder="assets/img1.png, assets/img2.png" style="width: 100%; padding: 1rem; background: var(--bg-dark); border: 1px solid var(--glass-border); color: white; border-radius: 12px; margin-top: 0.5rem; height: 100px;"></textarea>
-                    </div>
-                    <div id="pdfInputs" class="form-group" style="display: none;">
-                        <label>PDF URL</label>
-                        <input type="text" id="pPdfUrl" placeholder="assets/brochure.pdf" style="width: 100%; padding: 1rem; background: var(--bg-dark); border: 1px solid var(--glass-border); color: white; border-radius: 12px; margin-top: 0.5rem;">
-                    </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Generate Project Code</button>
-                </form>
 
-                <div id="codeOutput" style="display: none; margin-top: 2rem;">
-                    <h3 style="margin-bottom: 1rem;">Generated Code (Paste into work.html)</h3>
-                    <div style="background: #1a1a24; padding: 1.5rem; border-radius: 16px; position: relative;">
-                        <p style="color: var(--accent-1); margin-bottom: 1rem; font-size: 0.9rem;">1. Add this to the HTML grid:</p>
-                        <pre id="htmlCode" style="font-size: 0.8rem; overflow-x: auto; color: #ccc; margin-bottom: 2rem;"></pre>
-                        
-                        <p style="color: var(--accent-1); margin-bottom: 1rem; font-size: 0.9rem;">2. Add this to the projectData object in JS:</p>
-                        <pre id="jsCode" style="font-size: 0.8rem; overflow-x: auto; color: #ccc;"></pre>
-                        
-                        <button onclick="copyGeneratedCode()" class="btn btn-outline" style="margin-top: 2rem; width: 100%;">Copy All Code</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
     <script>
@@ -307,117 +248,11 @@
             if (e.key === 'Escape') closeAll();
         });
 
-        // Project Generator Script
-        const generatorModal = document.getElementById('generatorModal');
-        const addProjectBtn = document.getElementById('addProjectBtn');
-        const closeGenerator = document.getElementById('closeGenerator');
-        const projectForm = document.getElementById('projectForm');
-        const pType = document.getElementById('pType');
-        const galleryInputs = document.getElementById('galleryInputs');
-        const pdfInputs = document.getElementById('pdfInputs');
-        const codeOutput = document.getElementById('codeOutput');
 
-        addProjectBtn.onclick = () => {
-            generatorModal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        };
-
-        closeGenerator.onclick = () => {
-            generatorModal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        };
-
-        pType.onchange = () => {
-            if (pType.value === 'pdf') {
-                galleryInputs.style.display = 'none';
-                pdfInputs.style.display = 'block';
-            } else {
-                galleryInputs.style.display = 'block';
-                pdfInputs.style.display = 'none';
-            }
-        };
-
-        projectForm.onsubmit = (e) => {
-            e.preventDefault();
-            const title = document.getElementById('pTitle').value;
-            const category = document.getElementById('pCategory').value;
-            const mainImg = document.getElementById('pMainImg').value;
-            const type = pType.value;
-            const gallery = document.getElementById('pGallery').value.split(',').map(s => s.trim()).filter(s => s);
-            const pdfUrl = document.getElementById('pPdfUrl').value;
-
-            let htmlSnippet = '';
-            if (type === 'pdf') {
-                htmlSnippet = `
-<div class="portfolio-item" data-type="pdf" data-url="${pdfUrl}">
-    <img src="${mainImg}" alt="${title}">
-    <div class="portfolio-overlay">
-        <span>${category}</span>
-        <h3>${title}</h3>
-    </div>
-</div>`;
-            } else {
-                htmlSnippet = `
-<div class="portfolio-item">
-    <img src="${mainImg}" alt="${title}">
-    <div class="portfolio-overlay">
-        <span>${category}</span>
-        <h3>${title}</h3>
-    </div>
-</div>`;
-            }
-
-            let jsSnippet = `'${title}': [\n    ${gallery.map(s => `'${s}'`).join(',\n    ')}\n],`;
-
-            document.getElementById('htmlCode').textContent = htmlSnippet.trim();
-            document.getElementById('jsCode').textContent = jsSnippet;
-            codeOutput.style.display = 'block';
-        };
-
-        function copyGeneratedCode() {
-            const h = document.getElementById('htmlCode').textContent;
-            const j = document.getElementById('jsCode').textContent;
-            const full = `<!-- HTML CODE -->\n${h}\n\n// JS CODE\n${j}`;
-            navigator.clipboard.writeText(full);
-            alert('Code copied to clipboard! Now paste it into work.html');
-        }
-
-        // --- Hidden Admin Security ---
-        const SECRET_PASSCODE = '7575'; // Change this to your preferred passcode
-        let clickCount = 0;
-        let clickTimer;
-
-        function checkAdmin() {
-            if (localStorage.getItem('isAdmin') === 'true') {
-                document.body.classList.add('admin-mode');
-            }
-        }
-
-        document.getElementById('adminTrigger').addEventListener('click', () => {
-            clickCount++;
-            clearTimeout(clickTimer);
-            
-            if (clickCount === 5) {
-                const pass = prompt('Enter Admin Passcode:');
-                if (pass === SECRET_PASSCODE) {
-                    localStorage.setItem('isAdmin', 'true');
-                    document.body.classList.add('admin-mode');
-                    alert('Admin Mode Activated!');
-                } else {
-                    alert('Incorrect Passcode');
-                }
-                clickCount = 0;
-            }
-
-            clickTimer = setTimeout(() => { clickCount = 0; }, 1000);
-        });
-
-        // Initialize admin state
-        checkAdmin();
     </script>
 
     <footer>
-        <p id="adminTrigger" style="cursor: default;">&copy; Mohammed Mohsen Designs. All rights reserved.</p>
+        <p>&copy; Mohammed Mohsen Designs. All rights reserved.</p>
     </footer>
 </body>
 </html>

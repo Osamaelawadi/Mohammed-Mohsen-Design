@@ -527,45 +527,7 @@ footer p {
     padding: 6rem 2rem;
 }
 
-.add-project-card {
-    display: none; /* Hidden by default */
-    border: 2px dashed var(--glass-border) !important;
-    background: transparent !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: var(--transition);
-}
 
-body.admin-mode .add-project-card {
-    display: flex; /* Only show in admin mode */
-}
-
-.add-project-card:hover {
-    border-color: var(--accent-1) !important;
-    background: var(--glass) !important;
-    transform: translateY(-10px) scale(1.02);
-}
-
-.add-project-content {
-    text-align: center;
-    color: var(--text-dim);
-}
-
-.plus-icon {
-    font-size: 4rem;
-    font-weight: 300;
-    margin-bottom: 1rem;
-    background: var(--gradient-1);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.add-project-card p {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--text-main);
-}
 
 .gallery-images-grid {
     display: grid;
